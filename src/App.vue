@@ -1,43 +1,45 @@
 <template>
   <main>
-    <h1>Входное тестовое</h1>
-    <h2>Тест</h2>
-    <p>
-      Входное тестовое нужно, чтобы мы понимали твой уровень JavaScript и Vue,
-      умение работать с REST API.
-    </p>
-    <p>
-      На проекте подключен Bootstrap, чтобы сэкономить ваше время на вёрстку.
-    </p>
-    <ul>
-      <li>
-        API документация:
-        <a target="_blank" href="https://vue-study.dev.creonit.ru/"
+    <section>
+      <h1>Входное тестовое</h1>
+      <h2>Тест</h2>
+      <p>
+        Входное тестовое нужно, чтобы мы понимали твой уровень JavaScript и Vue,
+        умение работать с REST API.
+      </p>
+      <p>
+        На проекте подключен Bootstrap, чтобы сэкономить ваше время на вёрстку.
+      </p>
+      <ul>
+        <li>
+          API документация:
+          <a target="_blank" href="https://vue-study.dev.creonit.ru/"
           >https://vue-study.dev.creonit.ru/</a
-        >
-      </li>
-      <li>
-        Bootstrap:
-        <a
-          href="https://getbootstrap.com/docs/4.5/getting-started/introduction/"
+          >
+        </li>
+        <li>
+          Bootstrap:
+          <a
+              href="https://getbootstrap.com/docs/4.5/getting-started/introduction/"
           >https://getbootstrap.com/docs/4.5/getting-started/introduction/</a
-        >
-      </li>
-      <li>
-        Vue документация:
-        <a href="https://vuejs.org/v2/guide/">https://vuejs.org/v2/guide/</a>
-        <br />
-        Вам понадобиться v-model, v-for, v-bind, рендер хуки.
-      </li>
-    </ul>
+          >
+        </li>
+        <li>
+          Vue документация:
+          <a href="https://vuejs.org/v2/guide/">https://vuejs.org/v2/guide/</a>
+          <br/>
+          Вам понадобиться v-model, v-for, v-bind, рендер хуки.
+        </li>
+      </ul>
 
-    <p>Что будет учитываться при оценке:</p>
-    <ol>
-      <li>Чистота кода.</li>
-      <li>Использование фич Vue.</li>
-      <li>Компонентный подход.</li>
-      <li>Использование ES6.</li>
-    </ol>
+      <p>Что будет учитываться при оценке:</p>
+      <ol>
+        <li>Чистота кода.</li>
+        <li>Использование фич Vue.</li>
+        <li>Компонентный подход.</li>
+        <li>Использование ES6.</li>
+      </ol>
+    </section>
 
     <div class="alert alert-secondary" role="alert">
       Вы получили вёрстку, которую вам надо интегрировать с бэком.
@@ -48,11 +50,8 @@
       <p>Нужно отправить форму Оформления заказа на сервер.</p>
       <p>
         /api/orders:
-        <a
-          target="_blank"
-          href="https://vue-study.dev.creonit.ru/#/Orders/post_api_orders"
-          >https://vue-study.dev.creonit.ru/#/Orders/post_api_orders</a
-        >
+        <a target="_blank" href="https://vue-study.dev.creonit.ru/#/Orders/post_api_orders"
+        >https://vue-study.dev.creonit.ru/#/Orders/post_api_orders</a>
       </p>
       <h3>Требования:</h3>
       <ol>
@@ -79,40 +78,7 @@
       <h4>Оценка менеджера</h4>
       <p>~20 минут. Если незнакомы с Vue — 40 минут.</p>
 
-      <form>
-        <div class="form-group">
-          <label class="d-block">
-            <div class="mb-2">Представьтесь</div>
-            <input type="" class="form-control is-invalid" />
-            <div class="invalid-feedback">Ошибка</div>
-          </label>
-        </div>
-        <div class="form-group">
-          <label class="d-block">
-            <div class="mb-2">Адрес доставки</div>
-            <input type="" class="form-control" />
-          </label>
-        </div>
-        <div class="form-group">
-          <label class="d-block">
-            <div class="mb-2">Телефон</div>
-            <input type="" class="form-control" />
-          </label>
-        </div>
-        <div class="form-group">
-          <label class="d-block">
-            <div class="mb-2">Эл. почта</div>
-            <input type="" class="form-control" />
-          </label>
-        </div>
-        <div class="form-group">
-          <label class="d-block">
-            <div class="mb-2">Комментарий</div>
-            <textarea class="form-control"></textarea>
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Отправить</button>
-      </form>
+      <Form/>
     </section>
 
     <section class="container mb-5">
@@ -124,11 +90,8 @@
       <p>Вывести товары нужно из категории с `id: 3`</p>
       <p>
         /api/products:
-        <a
-          target="_blank"
-          href="https://vue-study.dev.creonit.ru/#/Products/get_api_products"
-          >https://vue-study.dev.creonit.ru/#/Products/get_api_products</a
-        >
+        <a target="_blank" href="https://vue-study.dev.creonit.ru/#/Products/get_api_products"
+        >https://vue-study.dev.creonit.ru/#/Products/get_api_products</a>
       </p>
       <h3>Требования:</h3>
       <ol>
@@ -145,9 +108,9 @@
         <div class="col-6">
           <div class="card">
             <img
-              src="http://placehold.it/200x200"
-              class="card-img-top"
-              alt="Название"
+                src="http://placehold.it/200x200"
+                class="card-img-top"
+                alt="Название"
             />
             <div class="card-body">
               <h5 class="card-title">Детский трюковой самокат Razor Grom</h5>
@@ -160,9 +123,9 @@
         <div class="col-6">
           <div class="card">
             <img
-              src="http://placehold.it/200x200"
-              class="card-img-top"
-              alt="Название"
+                src="http://placehold.it/200x200"
+                class="card-img-top"
+                alt="Название"
             />
             <div class="card-body">
               <h5 class="card-title">Детский самокат Razor</h5>
@@ -180,20 +143,22 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
+import Form from "./Form.vue";
+
 /**
  * Метод для получение товаров из категории
  * @todo Реализовать получение товаров
  * @param {string | number} category id/slug категории
  */
 axios
-  .get("https://vue-study.dev.creonit.ru/api/products", {
-    params: {
-      categoryId: 3,
-    },
-  })
-  .then((response) => {
-    console.log(response);
-  });
+    .get("https://vue-study.dev.creonit.ru/api/products", {
+      params: {
+        categoryId: 3,
+      },
+    })
+    .then((response) => {
+      console.log(response);
+    });
 
 /**
  * Объект продукта
@@ -214,6 +179,8 @@ export default {
       products: null,
     };
   },
-  components: {},
+  components: {
+    Form
+  },
 };
 </script>
