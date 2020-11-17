@@ -104,82 +104,22 @@
         Зарефакторить карточку товара используя БЭМ наименование. Это ещё займёт
         10 минут.
       </p>
-      <div class="row">
-        <div class="col-6">
-          <div class="card">
-            <img
-                src="http://placehold.it/200x200"
-                class="card-img-top"
-                alt="Название"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Детский трюковой самокат Razor Grom</h5>
-              <h6 class="card-subtitle mb-2 text-muted">4 990 ₽</h6>
-              <a href="#" class="card-link" style="color: blue">Синий</a>
-              <a href="#" class="card-link" style="color: green">Зелёный</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card">
-            <img
-                src="http://placehold.it/200x200"
-                class="card-img-top"
-                alt="Название"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Детский самокат Razor</h5>
-              <h6 class="card-subtitle mb-2 text-muted">5 990 ₽</h6>
-              <a href="#" class="card-link" style="color: blue">Синий</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <ProductsList/>
     </section>
   </main>
 </template>
 
 <script>
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 
 import Form from "./Form.vue";
-
-/**
- * Метод для получение товаров из категории
- * @todo Реализовать получение товаров
- * @param {string | number} category id/slug категории
- */
-axios
-    .get("https://vue-study.dev.creonit.ru/api/products", {
-      params: {
-        categoryId: 3,
-      },
-    })
-    .then((response) => {
-      console.log(response);
-    });
-
-/**
- * Объект продукта
- * @typedef Product
- * @property {number} id айди
- * @property {string} title заголовок
- * @property {string} [image] ссылка на картинку
- * @property {Array <Object>} [colors] возможные цвета
- */
+import ProductsList from "@/Products/ProductsList";
 
 export default {
   name: "App",
-  data() {
-    return {
-      /**
-       * @type {Array <Product>}
-       */
-      products: null,
-    };
-  },
   components: {
+    ProductsList,
     Form
   },
 };
