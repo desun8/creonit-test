@@ -2,7 +2,6 @@
   <main>
     <section>
       <h1>Входное тестовое</h1>
-      <h2>Тест</h2>
       <p>
         Входное тестовое нужно, чтобы мы понимали твой уровень JavaScript и Vue,
         умение работать с REST API.
@@ -119,8 +118,8 @@ import ProductsList from "@/Products/ProductsList";
 export default {
   name: "App",
   components: {
+    Form,
     ProductsList,
-    Form
   },
 };
 </script>

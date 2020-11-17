@@ -126,7 +126,7 @@ export default {
                 data
             )
             .catch((error) => {
-              console.error("post -> error 🤷🏻‍♂️", error);
+              // console.error("post -> error 🤷🏻‍♂️", error);
               if (error.response) {
                 const { data } = error.response;
                 this.handleError(data);
