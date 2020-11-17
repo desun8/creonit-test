@@ -31,7 +31,7 @@
     </div>
 
     <ProductCard
-        v-for="item in items"
+        v-for="item in Product"
         :key="item.id"
         :image="item.image.file"
         :title="item.title"
@@ -50,13 +50,15 @@ export default {
   components: { ProductCard },
   data() {
     return {
-      items: undefined
+      Product: undefined
     };
   },
   methods: {
     async getData() {
-      const res = await axios.get("https://vue-study.dev.creonit.ru/api/products?categoryId=3");
-      this.items = res.data.items;
+      const res = await axios.get("https://vue-study.dev.creonit.ru/api/products", {
+        params: { categoryId: 3 }
+      });
+      this.Product = res.data.items;
     }
   },
   mounted() {

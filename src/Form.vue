@@ -4,59 +4,63 @@
       <label class="d-block">
         <span class="mb-2">Представьтесь</span>
         <input
-            ref="name"
             v-model.trim="name"
             @focus="handleFocus"
+            :class="{'is-invalid': error.name}"
             type="text"
             class="form-control"
+            name="name"
         />
-        <span class="invalid-feedback">Ошибка</span>
+        <span class="invalid-feedback">{{ error.name }}</span>
       </label>
     </div>
     <div class="form-group">
       <label class="d-block">
         <span class="mb-2">Адрес доставки</span>
         <input
-            ref="address"
             v-model.trim="address"
             @focus="handleFocus"
+            :class="{'is-invalid': error.address}"
             type="text"
             class="form-control"
+            name="address"
         />
-        <span class="invalid-feedback">Ошибка</span>
+        <span class="invalid-feedback">{{ error.address }}</span>
       </label>
     </div>
     <div class="form-group">
       <label class="d-block">
         <span class="mb-2">Телефон</span>
         <input
-            ref="phone"
             v-model.trim="phone"
             @focus="handleFocus"
+            :class="{'is-invalid': error.phone}"
             type="tel"
             class="form-control"
+            name="phone"
+            placeholder="+xxxxxxxxxxx"
         />
-        <span class="invalid-feedback">Ошибка</span>
+        <span class="invalid-feedback">{{ error.phone }}</span>
       </label>
     </div>
     <div class="form-group">
       <label class="d-block">
         <span class="mb-2">Эл. почта</span>
         <input
-            ref="email"
             v-model.trim="email"
             @focus="handleFocus"
+            :class="{'is-invalid': error.email}"
             type="email"
             class="form-control"
+            name="email"
         />
-        <span class="invalid-feedback">Ошибка</span>
+        <span class="invalid-feedback">{{ error.email }}</span>
       </label>
     </div>
     <div class="form-group">
       <label class="d-block">
         <span class="mb-2">Комментарий</span>
         <textarea
-            ref="comment"
             v-model.trim="comment"
             class="form-control"
         ></textarea>
@@ -78,23 +82,19 @@ export default {
       phone: "",
       email: "",
       comment: "",
+      error: {
+        name: "",
+        address: "",
+        phone: "",
+        email: "",
+      }
     };
   },
   methods: {
-    toggleError(elm, add = false) {
-      if (elm === undefined || elm === null) return;
-
-      const ERR_CLASS = "is-invalid";
-
-      if (add) {
-        elm.classList.add(ERR_CLASS);
-      } else {
-        elm.classList.remove(ERR_CLASS);
-      }
-    },
-
     handleFocus({ target }) {
-      this.toggleError(target, false);
+      if (this.error[target.name]) {
+        this.error[target.name] = "";
+      }
     },
 
     handleError(data) {
@@ -104,26 +104,44 @@ export default {
       for (const key in request) {
         // eslint-disable-next-line
         if (request.hasOwnProperty(key)) {
-          const elm = this.$refs[key];
-          this.toggleError(elm, true);
+          if (this.error[key] !== undefined) {
+            this.error[key] = request[key];
+          }
         }
       }
     },
 
     async post() {
       try {
-        const { name, address, phone, email, comment } = this;
-        const data = { name, address, phone, email, comment };
+        const data = {
+          name: this.name,
+          address: this.address,
+          phone: this.phone,
+          email: this.email,
+          comment: this.comment
+        };
 
         const res = await axios.get(
             "https://vue-study.dev.creonit.ru/api/users/accessKey"
         );
         const userAccessKey = res.data.accessKey;
 
-        axios
+        await axios.post(
+            "https://vue-study.dev.creonit.ru/api/baskets/products",
+            {
+              "productId": "7",
+              "quantity": "10"
+            },
+            { params: { userAccessKey } });
+
+        // Если запрос идет последним, то зачем ждать?
+        // Понятно, что если будет усложняться, то стоит добавить "await".
+        // Но в данном случае получается что добавляем навсякий 🤷🏻‍♂️
+        await axios
             .post(
-                `https://vue-study.dev.creonit.ru/api/orders?userAccessKey=${userAccessKey}`,
-                data
+                `https://vue-study.dev.creonit.ru/api/orders`,
+                data,
+                { params: { userAccessKey } }
             )
             .catch((error) => {
               // console.error("post -> error 🤷🏻‍♂️", error);
